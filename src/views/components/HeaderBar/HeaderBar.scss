@@ -55,6 +55,10 @@
         line-height: 29px;
       }
     }
+    &__link{
+      display: flex;
+      align-items: center;
+    }
     &__date {
       p {
         font-weight: bold;

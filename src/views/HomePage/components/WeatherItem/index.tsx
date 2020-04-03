@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import "./WeatherItem.scss";
 import stormyIcon from "../../../../images/cloud 1.svg";
 import cloudyIcon from "../../../../images/forecast 2.svg";
@@ -8,7 +9,7 @@ import winterIcon from "../../../../images/winter 1.svg";
 
 export const WeatherItem: React.FC = () => {
   return (
-    <div className="weather_item">
+      <Link className="weather_item" to='/details-page'>
       <p className="weather_item__title">Новосибирск</p>
       <img className="weather_item__image" src={stormyIcon} alt="" />
       <div className="weather_item__desc">
@@ -27,6 +28,6 @@ export const WeatherItem: React.FC = () => {
           </div>
         </div>
       </div>
-    </div>
+      </Link>
   );
 };

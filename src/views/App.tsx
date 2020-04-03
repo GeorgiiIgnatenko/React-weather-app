@@ -1,13 +1,12 @@
-import React from 'react';
-import {HomePage} from './HomePage'
+import React from "react";
 import './App.scss'
 
-function App() {
-  return (
-      <div>
-        <HomePage />
-      </div>
-  );
-}
+import {HeaderBar} from "./components/HeaderBar";
+import {Routes} from "./Routes/Routes";
 
-export default App;
+export const App = () => (
+    <div>
+        <HeaderBar/>
+        <Routes/>
+    </div>
+);

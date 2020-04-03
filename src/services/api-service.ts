@@ -10,9 +10,10 @@ export class ApiService {
 
     async getWeather () {
         const res:any = await fetch(this.url);
-        if (res.ok){
-            return await res.json()
+        if (!res.ok){
+            throw Error(res.statusText)
         }
+        return await res.json()
     }
 }
 
