@@ -1,8 +1,12 @@
 import React from 'react';
+import {HomePage} from './HomePage'
+import './App.scss'
 
 function App() {
   return (
-    <p>Hello from React-TS</p>
+      <div>
+        <HomePage />
+      </div>
   );
 }
 

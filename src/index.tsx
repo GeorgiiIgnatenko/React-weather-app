@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import App from './views/App';
 import * as serviceWorker from './serviceWorker';
+import './index.scss';
+
+import './fonts/Montserrat-Bold.woff2'
+import './fonts/Montserrat-Regular.woff2'
+import './fonts/Montserrat-SemiBold.woff2'
+import './fonts/Segoe-UI.ttf'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <App />,
   document.getElementById('root')
 );
 

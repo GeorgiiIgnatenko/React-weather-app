@@ -1,0 +1,14 @@
+@font-face {
+  font-family: 'Segoe UI';
+  src: local('Segoe-UI'), url(../../../../fonts/Segoe-UI.ttf) format('ttf');
+}
+
+.app_body{
+  height: 640px;
+  background: linear-gradient(180deg, #774E98 0.15%, #070E4F 100%);
+  background-blend-mode: darken;
+
+  p{
+    font-family: "Segoe UI",'serif';
+  }
+}
