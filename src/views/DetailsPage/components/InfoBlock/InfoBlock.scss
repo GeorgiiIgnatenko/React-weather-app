@@ -1,0 +1,55 @@
+
+.info_block{
+  padding-top: 30px;
+  padding-left:15px ;
+  display: flex;
+  flex-direction: column;
+
+  &__title{
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 64px;
+  }
+  &__time{
+    font-weight: 300;
+    font-size: 23px;
+    line-height: 32px;
+  }
+  &__weather_state{
+    margin-top:25px ;
+    display: flex;
+    &__icon{
+        width: 210px ;
+        height: 210px;
+    }
+    &__desc{
+      margin-left: 30px;
+      flex-direction: column;
+
+      &__temp p{
+        font-weight: 600;
+        font-size: 38px;
+        line-height: 51px;
+      }
+      &__temp span{
+        font-size: 24px;
+      }
+      &__clouds {
+        margin-top: 15px;
+        font-size: 36px;
+      }
+      &__pressure{
+        margin-top: 10px;
+        font-size: 36px;
+      }
+      &__humidity{
+        margin-top: 12px;
+        font-size: 28px;
+      }
+      &__wind{
+        margin-top: 12px;
+        font-size: 28px;
+      }
+    }
+  }
+}

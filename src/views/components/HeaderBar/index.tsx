@@ -1,13 +1,25 @@
 import React from "react";
+import {useDispatch} from "react-redux";
 import "./HeaderBar.scss";
 import burgerMenu from "../../../images/burger-menu.svg";
 import logo from "../../../images/Logo.png";
 import { Switch } from "antd";
 import "antd/dist/antd.css";
 
+
 import {NavLink} from "react-router-dom";
+import {changeTheme} from "../../../redux/actions";
 
 export const HeaderBar: React.FC = () => {
+  const dispatch = useDispatch();
+
+  const switchHandler = () => {
+    const appEl:any = document.querySelector('.app');
+    appEl.classList.contains('dark')
+        ? dispatch(changeTheme('light'))
+        : dispatch(changeTheme('dark'));
+  };
+
   return (
     <div className="header">
       <div className="header_bar">
@@ -29,7 +41,7 @@ export const HeaderBar: React.FC = () => {
         </div>
         <div className="header_bar__switch">
           <p>Светлая</p>
-          <Switch defaultChecked={true} />
+          <Switch onChange={() => switchHandler()} defaultChecked={true} />
           <p>Темная</p>
         </div>
       </div>

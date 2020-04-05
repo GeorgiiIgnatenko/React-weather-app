@@ -1,0 +1,16 @@
+.details-page{
+  background: linear-gradient(180deg, #774E98 0.15%, #070E4F 100%);
+  background-blend-mode: darken;
+  height: 680px;
+
+  .container{
+    display: flex;
+    width: 1410px;
+    margin: 0 auto;
+  }
+
+  p,span{
+    font-family: "Segoe UI",serif;
+    color: #FFFFFF;
+  }
+}

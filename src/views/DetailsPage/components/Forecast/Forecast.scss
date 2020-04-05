@@ -1,0 +1,26 @@
+.forecast{
+  margin-top: 210px;
+  display: flex;
+  &__item{
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__date{
+      font-size: 25px;
+    }
+    &__icon {
+      margin-top: 15px;
+      width: 110px;
+      height: 110px;
+    }
+    &__temp{
+      margin-top: 10px;
+      font-size: 28px;
+    }
+    &__desc{
+      margin-top: 10px;
+      font-size: 28px;
+    }
+  }
+}

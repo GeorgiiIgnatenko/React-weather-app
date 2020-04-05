@@ -1,0 +1,28 @@
+@font-face {
+  font-family: 'Segoe UI';
+  src: local('Segoe-UI'), url(../fonts/Segoe-UI.ttf) format('ttf');
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: local("Montserrat-Regular"),
+  url(../fonts/Montserrat-Regular.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 600;
+  src: local("Montserrat-SemiBold"),
+  url(../fonts/Montserrat-SemiBold.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Montserrat";
+  font-weight: bold;
+  src: local("Montserrat-Bold"),
+  url(../fonts/Montserrat-Bold.woff2) format("woff2");
+}
+
+.app .light{
+  p,span{
+    color: #000;
+  }
+}
