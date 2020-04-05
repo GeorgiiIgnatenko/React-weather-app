@@ -10,7 +10,7 @@ import winterIcon from "../../../../images/winter 1.svg";
 export const InfoBlock: React.FC = () => (
   <div className="info_block">
     <p className="info_block__title">Погода в Новосибирске</p>
-    <p className="info_block__time">Сейчас: 15:58</p>
+    <p className="info_block__time">Сейчас: 15:44</p>
     <div className="info_block__weather_state">
         <object className='info_block__weather_state__icon' data={stormyIcon} type="image/svg+xml">
           I

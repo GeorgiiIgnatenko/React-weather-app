@@ -7,7 +7,7 @@ import { Forecast } from "./components/Forecast";
 export const DetailsPage: React.FC = () => {
   return (
     <div className="details-page">
-      <div className='container'>
+      <div className='details-block container'>
         <InfoBlock />
         <Forecast />
       </div>

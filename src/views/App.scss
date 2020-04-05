@@ -21,8 +21,51 @@
   url(../fonts/Montserrat-Bold.woff2) format("woff2");
 }
 
-.app .light{
+.light{
   p,span{
-    color: #000;
+    color: #000 !important;
+  }
+  .header{
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    background-color: #FFFFFF;
+    svg rect{
+      fill: #593968;
+    }
+    p{
+      color: #593968 !important;
+    }
+    &_bar__logo{
+      background: #50a3eb !important;
+    }
+  }
+  div{
+    background: #FFF;
+  }
+  .weather_item{
+    background: #50a3eb !important;
+    div{
+      background-color: unset !important;
+    }
+    p,span{
+      color: #593968 !important;
+    }
+    &__short_info p{
+      color: #FFF !important;
+    }
+    &__min_temp p , &__max_temp p{
+      color: #FFF !important;
+    }
   }
 }
+
+//  background-color: #50a3eb;
+//  border-radius: 20px;
+//  div{
+//  background: unset
+//  }
+//  .forecast{
+//    padding: 0 15px 15px 0;
+//  }
+//}
