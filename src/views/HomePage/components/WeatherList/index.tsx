@@ -1,22 +1,12 @@
 import React from "react";
 import "./WeatherList.scss";
-import { WeatherItem } from "../WeatherItem";
-import { ApiService } from "../../../../services/api-service";
+import WeatherItem  from "../WeatherItem";
 
-export default class WeatherList extends React.Component {
-  //componentDidMount(): void {
-  //    new ApiService().getWeather().then((r) => {
-  //        console.log(r)
-  //    })
-  //}
 
-  render() {
-    return (
+export const WeatherList = () => (
       <div className="weather_list">
-          <WeatherItem />
-          <WeatherItem />
-          <WeatherItem />
+          <WeatherItem key={0} id={0} />
+          <WeatherItem key={1} id={1}/>
+          <WeatherItem key={2} id={2} />
       </div>
-    );
-  }
-}
+);
