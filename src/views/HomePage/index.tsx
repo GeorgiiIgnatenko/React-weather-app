@@ -4,8 +4,8 @@ import {Body} from "./components/Body";
 
 export const HomePage:React.FC = () => {
     return(
-        <div>
+        <>
             <Body />
-        </div>
+        </>
     )
 };

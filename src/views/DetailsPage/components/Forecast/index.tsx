@@ -13,31 +13,20 @@ export const Forecast:React.FC = () => {
     console.log(date);
     return(
         <div className='forecast'>
-            <div className="forecast__item">
-                <p className="forecast__item__date">{week[date + 1]}</p>
-                <img src={rainyIcon} alt='' className="forecast__item__icon"/>
-                <p className="forecast__item__temp">9°</p>
-                <p className="forecast__item__desc">Дождь</p>
+            {[0,1,2,3].map((el:any) => {
+                return(
+                    <div
+                        className="forecast__item"
+                        key ={el}
+                    >
+                        <p className="forecast__item__date">{week[date + 1]}</p>
+                        <img src={rainyIcon} alt='' className="forecast__item__icon"/>
+                        <p className="forecast__item__temp">9°</p>
+                        <p className="forecast__item__desc">Дождь</p>
+                    </div>
+                )
+            })}
             </div>
-            <div className="forecast__item">
-                <p className="forecast__item__date">{week[date + 2]}</p>
-                <img src={sunnyIcon} alt='' className="forecast__item__icon"/>
-                <p className="forecast__item__temp">9°</p>
-                <p className="forecast__item__desc">Дождь</p>
-            </div>
-            <div className="forecast__item">
-                <p className="forecast__item__date">{week[date + 3]}</p>
-                <img src={stormyIcon} alt='' className="forecast__item__icon"/>
-                <p className="forecast__item__temp">9°</p>
-                <p className="forecast__item__desc">Дождь</p>
-            </div>
-            <div className="forecast__item">
-                <p className="forecast__item__date">{week[date + 4]}</p>
-                <img src={winterIcon} alt='' className="forecast__item__icon"/>
-                <p className="forecast__item__temp">9°</p>
-                <p className="forecast__item__desc">Дождь</p>
-            </div>
-        </div>
     )
 };
 

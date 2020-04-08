@@ -3,10 +3,9 @@ import "./WeatherList.scss";
 import WeatherItem  from "../WeatherItem";
 
 
-export const WeatherList = () => (
+export const WeatherList:React.FC = ()=> (
       <div className="weather_list">
-          <WeatherItem key={0} id={0} />
-          <WeatherItem key={1} id={1}/>
-          <WeatherItem key={2} id={2} />
+          {[0,1,2].map(el => <WeatherItem key={el} id={el}/>)}
       </div>
 );
+

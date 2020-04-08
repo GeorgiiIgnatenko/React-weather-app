@@ -1,9 +1,9 @@
 import React from "react";
 
 import {Route, Switch} from 'react-router-dom';
-import {HomePage} from '../HomePage';
-import {DetailsPage} from "../DetailsPage";
-import {SavedCitiesPage} from "../SavedCitiesPage";
+import {HomePage} from '../views/HomePage';
+import {DetailsPage} from "../views/DetailsPage";
+import {SavedCitiesPage} from "../views/SavedCitiesPage";
 
 export const Routes = () => (
     <div>

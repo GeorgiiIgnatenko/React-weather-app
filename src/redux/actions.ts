@@ -1,17 +1,18 @@
-import {CHANGE_THEME,FETCH_WEATHER_FAILURE,FETCH_WEATHER_REQUEST,FETCH_WEATHER_SUCCESS} from "./actionTypes";
+import {CHANGE_THEME, FETCH_WEATHER_FAILURE, FETCH_WEATHER_REQUEST, FETCH_WEATHER_SUCCESS} from "./actionTypes";
 
 export function getRandomCity() {
     return function (dispatch:any) {
 
-        const cities = ["Tokyo", "Jakarta", "Chongqing", "Manila", "Delhi", "Seoul", "Mumbai", "Shanghai", "São Paulo", "Beijing", "New York City", "Lagos", "Mexico City", "Guangzhou", "Dhaka", "Osaka", "Cairo", "Karachi", "Moscow", "Bangkok", "Chengdu", "Los Angeles", "Kolkata", "Buenos Aires", "Istanbul", "Tehran", "London", "Shenzhen", "Tianjin", "Kinshasa", "Rio de Janeiro", "Paris", "Baoding", "Lahore", "Lima", "Bangalore", "Ho Chi Minh City", "Harbin", "Wuhan", "Shijiazhuang", "Bogotá", "Suzhou", "Linyi", "Chennai", "Nagoya", "Nanyang", "Zhengzhou", "Hyderabad", "Surabaya", "Hangzhou", "Johannesburg", "Chicago", "Qingdao", "Xi'an", "Quanzhou", "Taipei", "Dongguan", "Bandung", "Hanoi", "Shenyang", "Baghdad", "Onitsha", "Kuala Lumpur", "Ahmedabad", "Luanda", "Washington, D.C.", "Dallas", "Hong Kong", "Pune", "Nanjing", "Boston", "Santiago", "Houston", "Riyadh", "Düsseldorf", "Madrid", "Toronto", "Surat", "San Francisco","Novosibirsk"];
+        const cities = ["Сеул","Лондон","Токио","Пекин","Стамбул","Пекин","Шанхай","Чунцин","Берлин","Москва","Санкт-Петербург", "Новосибирск", "Воронеж", "Екатеринбург", "Омск", "Нижний Новгород", "Пермь", "Красноярск", "Челябинск", "Волгоград", "Уфа", "Ростов-на-Дону", "Самара", "Казань"];
         const randomCity = cities[Math.floor(Math.random() * cities.length)];
 
         const apiKey = 'bc7ba623f7cf19185a5332182b02e3cb';
-        const url = `https://api.openweathermap.org/data/2.5/forecast?q=${randomCity}&appid=${apiKey}&units=metric`;
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${randomCity}&appid=${apiKey}&units=metric&lang=ru`;
 
         dispatch({
-            type: FETCH_WEATHER_REQUEST
+           type: FETCH_WEATHER_REQUEST
         });
+
 
         fetch(url)
             .then(res => res.json())

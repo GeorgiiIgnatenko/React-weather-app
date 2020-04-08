@@ -12,41 +12,50 @@ import sunnyIcon from "../../../../images/sun 1.svg";
 import winterIcon from "../../../../images/winter 1.svg";
 
 class WeatherItem extends React.Component<any, any> {
-    componentDidMount(): void {
-        this.props.getRandomCity();
-    }
 
-    setIcon (){
-        switch (this.props.weatherState) {
-            case 'Clouds':
-                return cloudyIcon;
-            case 'Rain' || 'Drizzle':
-                return rainyIcon;
-            case 'Thunderstorm':
-                return stormyIcon;
-            case 'Snow':
-                return winterIcon;
-            case 'Clear':
-                return sunnyIcon;
-        }
-    }
+  componentDidMount(): void {
+    this.props.getRandomCity();
+  }
 
-    setDesc(){
-        switch (this.props.weatherState) {
-            case 'Clouds':
-                return "Облачно";
-            case 'Rain' || 'Drizzle':
-                return 'Дождь';
-            case 'Thunderstorm':
-                return "Гроза";
-            case 'Snow':
-                return "Снег";
-            case 'Clear':
-                return "Ясно";
-        }
+  setIcon() {
+    switch (this.props.weatherState) {
+      case "Clouds":
+      case "Haze":
+      case "Mist":
+        return cloudyIcon;
+      case "Rain":
+      case "Drizzle":
+        return rainyIcon;
+      case "Thunderstorm":
+        return stormyIcon;
+      case "Snow":
+        return winterIcon;
+      case "Clear":
+        return sunnyIcon;
     }
+  }
 
-    render() {
+  setDesc() {
+    switch (this.props.weatherState) {
+      case "Clouds":
+        return "Облачно";
+      case "Haze":
+        return "Дымка";
+      case "Mist":
+        return "Туман";
+      case "Rain":
+      case "Drizzle":
+        return "Дождь";
+      case "Thunderstorm":
+        return "Гроза";
+      case "Snow":
+        return "Снег";
+      case "Clear":
+        return "Ясно";
+    }
+  }
+
+  render():React.ReactNode {
     return (
       <Link className="weather_item" to="/details-page">
         <p className="weather_item__title">{this.props.cityTitle}</p>
@@ -72,18 +81,18 @@ class WeatherItem extends React.Component<any, any> {
   }
 }
 const mapDispatchToProps = {
-    getRandomCity
+  getRandomCity
 };
-const mapStateToProps = (state:any) => {
-    if (state.apiReducer.status === 'success'){
-    return{
-        cityTitle: state.apiReducer.response.city.name,
-        weatherState: state.apiReducer.response.list[4].weather[0].main,
-        temperature: state.apiReducer.response.list[4].main.temp.toFixed(1),
-        minTemp: state.apiReducer.response.list[4].main.temp_min.toFixed(1),
-        maxTemp: state.apiReducer.response.list[4].main.temp_max.toFixed(1),
+const mapStateToProps = (state: any,props:any) => {
+  if (state.apiReducer[props.id]){
+    return {
+      cityTitle: state.apiReducer[props.id].response.name,
+      weatherState: state.apiReducer[props.id].response.weather[0].main,
+      temperature: Math.round(state.apiReducer[props.id].response.main.temp),
+      minTemp: Math.round(state.apiReducer[props.id].response.main.temp_min),
+      maxTemp: Math.round(state.apiReducer[props.id].response.main.temp_max),
     }
-    }
+  }
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(WeatherItem);
+export default connect(mapStateToProps, mapDispatchToProps)(WeatherItem);
