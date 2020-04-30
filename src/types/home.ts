@@ -1,5 +1,6 @@
 export default interface WeatherProps {
-    cityTitle: string;
+    cityTitle?: string;
+    id?: number;
     weatherState: string;
     temperature: number;
     minTemp: number;

@@ -9,19 +9,19 @@ import rainyIcon from "../../../images/rain 1.svg";
 import sunnyIcon from "../../../images/sun 1.svg";
 import winterIcon from "../../../images/winter 1.svg";
 
-
 export const WeatherItem = ({
   weatherState,
   cityTitle,
   temperature,
   minTemp,
-  maxTemp
+  maxTemp,
+  id
 }: WeatherProps) => {
-
   function setIcon() {
     switch (weatherState) {
       case "Clouds":
       case "Haze":
+      case "Smoke":
       case "Mist":
         return cloudyIcon;
       case "Rain":
@@ -41,6 +41,7 @@ export const WeatherItem = ({
       case "Clouds":
         return "Облачно";
       case "Haze":
+      case "Smoke":
         return "Дымка";
       case "Mist":
         return "Туман";
@@ -57,7 +58,10 @@ export const WeatherItem = ({
   }
 
   return (
-    <Link className="weather_item" to="/details-page">
+    <Link 
+        className="weather_item" 
+        to={`/details-page/${cityTitle}&id=${id}`}
+    >
       <p className="weather_item__title">{cityTitle}</p>
       <img className="weather_item__image" src={setIcon()} alt="" />
       <div className="weather_item__desc">

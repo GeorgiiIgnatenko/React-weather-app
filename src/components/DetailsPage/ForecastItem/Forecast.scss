@@ -1,12 +1,17 @@
-.forecast{
-  margin-top: 210px;
+.forecast {
+  margin-left: 120px;
+  margin-top: 170px;
   display: flex;
-  &__item{
-    margin-left: 75px;
+
+  &__item {
+    margin-left: 65px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    &__date{
+    &:nth-child(1) {
+      margin-left: 0;
+    }
+    &__date {
       font-size: 25px;
     }
     &__icon {
@@ -14,11 +19,11 @@
       width: 110px;
       height: 110px;
     }
-    &__temp{
+    &__temp {
       margin-top: 10px;
       font-size: 28px;
     }
-    &__desc{
+    &__desc {
       margin-top: 10px;
       font-size: 28px;
     }

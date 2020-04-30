@@ -1,6 +1,4 @@
 import React from "react";
-import { Spin } from "antd";
-import "antd/es/spin";
 import "./WeatherList.scss";
 import WeatherItemContainer from "../WeatherItem";
 

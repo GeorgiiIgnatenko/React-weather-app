@@ -1,19 +1,15 @@
 import React from "react";
-import { WeatherItem } from "../../../components/HomePage/WeatherItem";
 import { connect } from "react-redux";
-import { getRandomCity, hideLoader, showLoader } from "../../../redux/actions";
-import {WeatherItemLoader} from "../../../components/HomePage/WeatherItemLoader";
+import { WeatherItem } from "../../../components/HomePage/WeatherItem";
+import { WeatherItemLoader } from "../../../components/HomePage/WeatherItemLoader";
+import { getWeather, hideLoader, showLoader } from "../../../redux/actions";
 
 class WeatherItemContainer extends React.Component<any, any> {
-  constructor(props: any) {
-    super(props);
-    this.props.showLoader();
-    this.props.getRandomCity(this.props.cityName);
-  }
-
   componentDidMount(): void {
-    console.log(this.props.loading);
-    this.props.hideLoader();
+    if (this.props.loading) {
+      this.props.getWeather(this.props.cityName);
+      this.props.hideLoader();
+    }
   }
 
   render(): React.ReactNode {
@@ -26,9 +22,10 @@ class WeatherItemContainer extends React.Component<any, any> {
             temperature={this.props.temperature}
             minTemp={this.props.minTemp}
             maxTemp={this.props.maxTemp}
+            id={this.props.id}
           />
         ) : (
-            <WeatherItemLoader/>
+          <WeatherItemLoader />
         )}
       </>
     );
@@ -36,32 +33,40 @@ class WeatherItemContainer extends React.Component<any, any> {
 }
 
 const mapDispatchToProps = {
-  getRandomCity,
+  getWeather,
   showLoader,
   hideLoader
 };
 
 const mapStateToProps = (state: any, props: any) => {
-  if (state.apiReducer[props.id]) {
-    const { name } = state.apiReducer[props.id].response;
-    const { main } = state.apiReducer[props.id].response.weather[0];
-    const { temp, temp_min, temp_max } = state.apiReducer[props.id].response.main;
+  if (
+    state.apiReducer.weatherReducer[props.id] &&
+    state.apiReducer.weatherReducer[props.id].status === "success"
+  ) {
+    const {cityTitle,weatherState,humidity,pressure,windSpeed,temperature,minTemp,maxTemp,tempFeelsLike} = state.apiReducer.weatherReducer[props.id].response;
     return {
-      cityTitle: name,
-      weatherState: main,
-      temperature: Math.round(temp),
-      minTemp: Math.round(temp_min),
-      maxTemp: Math.round(temp_max),
+      cityTitle: cityTitle,
+      weatherState: weatherState,
+      humidity: humidity,
+      pressure: pressure,
+      windSpeed: windSpeed,
+      temperature: temperature,
+      minTemp: minTemp,
+      maxTemp: maxTemp,
       loading: state.loaderReducer
     };
+
+    // return {
+    //   cityTitle: name,
+    //   weatherState: main,
+    //   temperature: Math.round(temp),
+    //   minTemp: Math.round(temp_min),
+    //   maxTemp: Math.round(temp_max),
+    //   loading: state.loaderReducer
+    // };
   } else {
     return {
-      cityTitle: "",
-      weatherState: "",
-      temperature: null,
-      minTemp: null,
-      maxTemp: null,
-      loading: state.loaderReducer
+      loading: true
     };
   }
 };

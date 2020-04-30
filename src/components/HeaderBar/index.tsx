@@ -19,7 +19,10 @@ export const HeaderBar = ({switchHandler}:any) => (
             <rect y="6" width="25" height="3" rx="1.5" fill="white" />
             <rect y="12" width="25" height="3" rx="1.5" fill="white" />
           </svg>
-          <NavLink className="header_bar__link" to="/">
+          <NavLink
+              className="header_bar__link"
+              to="/home"
+          >
             <div className="header_bar__logo">
             </div>
             <div className="header_bar__title">
