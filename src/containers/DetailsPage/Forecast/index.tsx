@@ -25,15 +25,30 @@ class ForecastContainer extends React.Component<any, PropsTypes> {
   ];
 
   componentDidMount(): void {
-    this.props.getForecast(this.props.city);
+    if (this.props.forecast.length < 3) {
+      this.props.getForecast(this.props.city);
+    }
   }
 
   render(): React.ReactElement {
+    let state = this.props.forecast;
     let id = 0;
-    if (this.props.dataArr) {
+    if (state.every((el: any) => el.status === "success")) {
+      let forecast: object[] = [];
+      let idx = state.findIndex(
+        (el: any) => el.response.city.name === this.props.city
+      );
+      if (idx >= 0) {
+        [0, 1, 2, 3].map((id: number) => {
+          if (state[idx]) {
+            const data:object = state[idx].response.list.find((el: any) => el.dt_txt === getByDate(id));
+            forecast.push(data);
+          }
+        });
+      }
       return (
         <div className="forecast">
-          {this.props.dataArr.map((el: any) => {
+          {forecast.map((el: any) => {
             let today = moment().add(id + 1, "days");
             id++;
             return (
@@ -51,6 +66,26 @@ class ForecastContainer extends React.Component<any, PropsTypes> {
     } else {
       return <div>loading...</div>;
     }
+    // let id = 0;
+    // if (this.props.dataArr) {
+    //   return (
+    //     <div className="forecast">
+    //       {this.props.dataArr.map((el: any) => {
+    //         let today = moment().add(id + 1, "days");
+    //         id++;
+    //         return (
+    //           <ForecastItem
+    //             today={today.format("dddd")}
+    //             id={id}
+    //             key={id}
+    //             temp={Math.floor(el.main.temp)}
+    //             weatherState={el.weather[0].main}
+    //           />
+    //         );
+    //       })}
+    //     </div>
+    //   );
+    // }
   }
 }
 
@@ -62,21 +97,35 @@ function getByDate(id: number) {
 }
 
 const mapStateToProps = (state: any, props: any) => {
-  if (
-      state.apiReducer.forecastReducer &&
-      state.apiReducer.forecastReducer[props.id]
-  ) {
-    const dataArr: any = [];
-    [0, 1, 2, 3].map((id: number) => {
-      const data = state.apiReducer.forecastReducer[props.id].response.list.find(
-        (el: any) => el.dt_txt === getByDate(id)
-      );
-      dataArr.push(data);
-    });
-    return { dataArr: dataArr };
+  if (state.apiReducer.forecastReducer) {
+    return { forecast: state.apiReducer.forecastReducer };
   } else {
     return {};
   }
+
+  //   let dataArr: any = [];
+  //   [0, 1, 2, 3].map((id: number) => {
+  //     const data = state.apiReducer.forecastReducer[
+  //       props.id
+  //     ].response.list.find((el: any) => el.dt_txt === getByDate(id));
+  //     dataArr.push(data);
+  //   });
+  //   return { dataArr: dataArr};
+  // } else if (
+  //   state.apiReducer.forecastReducer[0] &&
+  //   state.apiReducer.forecastReducer[0].response
+  // ) {
+  //   let dataArr: any = [];
+  //   [0, 1, 2, 3].map((id: number) => {
+  //     const data = state.apiReducer.forecastReducer[0].response.list.find(
+  //       (el: any) => el.dt_txt === getByDate(id)
+  //     );
+  //     dataArr.push(data);
+  //   });
+  //   return { dataArr: dataArr};
+  // }else {
+  //     return {}
+  // }
 };
 
 const mapDispatchToProps = {
