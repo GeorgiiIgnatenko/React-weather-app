@@ -25,9 +25,7 @@ class ForecastContainer extends React.Component<any, PropsTypes> {
   ];
 
   componentDidMount(): void {
-    if (this.props.forecast.length < 3) {
       this.props.getForecast(this.props.city);
-    }
   }
 
   render(): React.ReactElement {

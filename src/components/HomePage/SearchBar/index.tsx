@@ -1,13 +1,13 @@
 import React, { ChangeEvent } from "react";
 import { Input } from "antd";
-import { Redirect } from "react-router-dom";
+import {withRouter } from "react-router-dom";
 import "antd/es/input/style/index.css";
 import "./SearchBar.scss";
 const { Search } = Input;
 
-export class SearchBar extends React.Component<any, any> {
+class SearchBar extends React.Component<any, any> {
   state = {
-    value: "",
+    value: ""
   };
 
   changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -18,7 +18,8 @@ export class SearchBar extends React.Component<any, any> {
 
   submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
-    this.setState({ value: '' });
+    this.props.history.push(`/details-page/${this.state.value}&id=${new Date()}`);
+    this.setState({ value: "" });
   };
 
   render() {
@@ -36,3 +37,5 @@ export class SearchBar extends React.Component<any, any> {
     );
   }
 }
+
+export default withRouter(SearchBar)
