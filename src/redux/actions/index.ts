@@ -20,7 +20,7 @@ export function getWeather(cityName: string) {
       type: FETCH_WEATHER_REQUEST
     });
 
-    fetch(url)
+    return fetch(url)
       .then(res => res.json())
       .then(data =>
         dispatch({
@@ -45,7 +45,7 @@ export function getForecast(city: string) {
       type: FETCH_FORECAST_REQUEST
     });
 
-    fetch(url)
+    return fetch(url)
       .then(res => res.json())
       .then(data =>
         dispatch({
@@ -53,12 +53,12 @@ export function getForecast(city: string) {
           payload: data
         })
       )
-      .catch(error =>
+      .catch(error => {
         dispatch({
           type: FETCH_FORECAST_FAILURE,
           payload: error.message
-        })
-      );
+        });
+      });
   };
 }
 

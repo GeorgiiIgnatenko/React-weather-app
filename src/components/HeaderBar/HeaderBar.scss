@@ -3,7 +3,7 @@
   background-color: #2e0841;
 
   &_bar {
-    max-width: 1410px;
+    max-width: 1375px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -12,7 +12,6 @@
 
 
     &__left {
-      margin-left: 15px;
       display: flex;
       align-items: center;
     }
@@ -28,7 +27,6 @@
       width: 50px;
       height: 50px;
       background-color: #50a3eb;
-      margin-left: 30px;
     }
     &__title {
       margin-left: 15px;
@@ -54,7 +52,6 @@
       }
     }
     &__switch {
-      margin-right: 15px;
       display: flex;
       align-items: center;
 

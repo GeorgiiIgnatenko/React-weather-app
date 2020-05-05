@@ -18,7 +18,7 @@ class SearchBar extends React.Component<any, any> {
 
   submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
-    this.props.history.push(`/details-page/${this.state.value}&id=${new Date()}`);
+    this.props.history.push(`/details-page/${this.state.value}&id=${new Date().getTime()}`);
     this.setState({ value: "" });
   };
 

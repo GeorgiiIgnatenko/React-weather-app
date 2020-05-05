@@ -10,9 +10,9 @@ interface PropsTypes {
 
 class InfoBlockContainer extends React.Component<any, PropsTypes> {
   componentDidMount(): void {
-      if (!this.props.weatherState){
-          this.props.getWeather(this.props.city);
-      }
+    if (!this.props.weatherState) {
+      this.props.getWeather(this.props.city);
+    }
   }
 
   render(): React.ReactNode {
@@ -34,9 +34,21 @@ class InfoBlockContainer extends React.Component<any, PropsTypes> {
   }
 }
 
-const mapStateToProps = (state: any,props:any) => {
-  if (state.apiReducer.weatherReducer[props.id] && state.apiReducer.weatherReducer[props.id].status === "success") {
-    const {weatherState,humidity,pressure,windSpeed,temperature,minTemp,maxTemp,tempFeelsLike} = state.apiReducer.weatherReducer[props.id].response;
+const mapStateToProps = (state: any, props: any) => {
+  if (
+    state.apiReducer.weatherReducer[props.id] &&
+    state.apiReducer.weatherReducer[props.id].status === "success"
+  ) {
+    const {
+      weatherState,
+      humidity,
+      pressure,
+      windSpeed,
+      temperature,
+      minTemp,
+      maxTemp,
+      tempFeelsLike
+    } = state.apiReducer.weatherReducer[props.id].response;
     return {
       weatherState: weatherState,
       humidity: humidity,
@@ -47,8 +59,20 @@ const mapStateToProps = (state: any,props:any) => {
       maxTemp: maxTemp,
       tempFeelsLike: tempFeelsLike
     };
-  }else if (state.apiReducer.weatherReducer[0] && state.apiReducer.weatherReducer[0].status === "success") {
-    const {weatherState,humidity,pressure,windSpeed,temperature,minTemp,maxTemp,tempFeelsLike} = state.apiReducer.weatherReducer[0].response;
+  } else if (
+    state.apiReducer.weatherReducer[0] &&
+    state.apiReducer.weatherReducer[0].status === "success"
+  ) {
+    const {
+      weatherState,
+      humidity,
+      pressure,
+      windSpeed,
+      temperature,
+      minTemp,
+      maxTemp,
+      tempFeelsLike
+    } = state.apiReducer.weatherReducer[0].response;
     return {
       weatherState: weatherState,
       humidity: humidity,
@@ -59,8 +83,7 @@ const mapStateToProps = (state: any,props:any) => {
       maxTemp: maxTemp,
       tempFeelsLike: tempFeelsLike
     };
-  }
-  else {
+  } else {
     return {
       humidity: "",
       pressure: "",
