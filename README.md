@@ -1,4 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![weather_2](https://user-images.githubusercontent.com/48638830/127865300-279d499b-6092-481a-839d-de70baa9f2fa.png)
+https://weather-app-d3711.firebaseapp.com/home
 
 ## Available Scripts
 
